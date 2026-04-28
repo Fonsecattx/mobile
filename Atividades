@@ -1,0 +1,209 @@
+// Atividade 1
+
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <Button
+        title="Mostrar"
+        onPress={() => setMensagem(`Olá, ${nome}`)}
+      />
+
+      <Text style={styles.texto}>{mensagem}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', padding: 20 },
+  input: { borderWidth: 1, marginBottom: 10, padding: 10 },
+  texto: { fontSize: 18, marginTop: 10 }
+});
+
+// Atividade 2
+
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [idade, setIdade] = useState("");
+  const [resultado, setResultado] = useState("");
+
+  const verificarIdade = () => {
+    if (parseInt(idade) >= 18) {
+      setResultado("Maior de idade");
+    } else {
+      setResultado("Menor de idade");
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite sua idade"
+        keyboardType="numeric"
+        value={idade}
+        onChangeText={setIdade}
+      />
+
+      <Button title="Verificar" onPress={verificarIdade} />
+
+      <Text style={styles.texto}>{resultado}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', padding: 20 },
+  input: { borderWidth: 1, marginBottom: 10, padding: 10 },
+  texto: { fontSize: 18, marginTop: 10 }
+});
+
+// Atividade 3
+
+import React, { useState } from 'react';
+import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState("");
+
+  const validar = () => {
+    if (nome.trim() === "") {
+      Alert.alert("Erro", "Digite um nome!");
+    } else {
+      Alert.alert("Sucesso", `Olá, ${nome}`);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <Button title="Enviar" onPress={validar} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', padding: 20 },
+  input: { borderWidth: 1, marginBottom: 10, padding: 10 }
+});
+
+// Atividade 4
+
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState("");
+  const [curso, setCurso] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const mostrar = () => {
+    setMensagem(`Aluno ${nome} do curso ${curso}`);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Curso"
+        value={curso}
+        onChangeText={setCurso}
+      />
+
+      <Button title="Mostrar" onPress={mostrar} />
+
+      <Text style={styles.texto}>{mensagem}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', padding: 20 },
+  input: { borderWidth: 1, marginBottom: 10, padding: 10 },
+  texto: { fontSize: 18, marginTop: 10 }
+});
+
+// Atividade 5
+
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const mostrar = () => {
+    setMensagem(`Olá ${nome}, você mora em ${cidade}`);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Cidade"
+        value={cidade}
+        onChangeText={setCidade}
+      />
+
+      <Button title="Mostrar" onPress={mostrar} />
+
+      <Text style={styles.texto}>{mensagem}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', // centraliza
+    padding: 20 
+  },
+  input: { 
+    borderWidth: 1, 
+    marginBottom: 10, 
+    padding: 10,
+    width: '100%'
+  },
+  texto: { 
+    fontSize: 18, 
+    marginTop: 10,
+    color: 'blue', // cor da mensagem
+    textAlign: 'center'
+  }
+});
