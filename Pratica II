@@ -1,0 +1,55 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const mostrarNome = () => {
+    if (nome.trim() === "") {
+      setMensagem("Digite um nome válido!");
+      return;
+    }
+
+    setMensagem(`Olá, ${nome}! Seja bem-vindo(a)!`);
+    setNome(""); // limpa o campo
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Digite seu nome:</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <Button title="Enviar" onPress={mostrarNome} />
+
+      <Text style={styles.resultado}>{mensagem}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20
+  },
+  titulo: {
+    fontSize: 18,
+    marginBottom: 10
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 10
+  },
+  resultado: {
+    fontSize: 18,
+    marginTop: 10
+  }
+});
